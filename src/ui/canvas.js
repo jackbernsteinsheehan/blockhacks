@@ -37,17 +37,36 @@ export function text(ctx, str, x, y, { color = "#fff", size = 10, align = "left"
   ctx.fillText(str, x | 0, y | 0);
 }
 
-// Draws a placeholder "sprite" — a colored rounded blob with the member's
-// initials. Used until real pixel-art sprites are baked. The blob is
-// deterministic per id so each member looks distinct.
-export function drawPlaceholderSprite(ctx, id, name, x, y, size = 64) {
-  const hue = hashHue(id);
+// Draws a placeholder "sprite" — a colored blob with the member's initials.
+// Used until real pixel-art sprites are baked. Hue is spread via the golden
+// angle so sequential indices produce maximally-different colors; the shape
+// variant cycles every 4 to add an extra distinguishing feature.
+export function drawPlaceholderSprite(ctx, index, name, x, y, size = 64) {
+  const GOLDEN = 137.508;
+  const hue = Math.floor((index * GOLDEN) % 360);
+  const accentHue = (hue + 180) % 360;
+  const variant = index % 4; // 0..3 — body shape variant
+
   ctx.save();
   ctx.translate(x, y);
+
   // body
   rect(ctx, 6, 12, size - 12, size - 18, `hsl(${hue}, 55%, 45%)`);
   // head highlight
   rect(ctx, 10, 6, size - 20, 14, `hsl(${hue}, 65%, 65%)`);
+  // accent stripe varies by variant — diagonal stripe / horizontal band /
+  // dot cluster / outline frame. Makes hue-collisions still distinguishable.
+  if (variant === 0) {
+    rect(ctx, 14, size - 26, size - 28, 4, `hsl(${accentHue}, 70%, 55%)`);
+  } else if (variant === 1) {
+    rect(ctx, 8, 26, 6, size - 30, `hsl(${accentHue}, 70%, 55%)`);
+  } else if (variant === 2) {
+    for (let i = 0; i < 3; i++) {
+      rect(ctx, 18 + i * 10, size - 22, 6, 6, `hsl(${accentHue}, 70%, 55%)`);
+    }
+  } else {
+    strokeRect(ctx, 10, 16, size - 20, size - 26, `hsl(${accentHue}, 70%, 55%)`, 2);
+  }
   // shadow under
   rect(ctx, 8, size - 4, size - 16, 3, "rgba(0,0,0,0.45)");
   // initials
@@ -65,8 +84,3 @@ export function drawSprite(ctx, image, x, y, size = 64) {
   ctx.drawImage(image, x | 0, y | 0, size, size);
 }
 
-function hashHue(str) {
-  let h = 0;
-  for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) | 0;
-  return Math.abs(h) % 360;
-}
