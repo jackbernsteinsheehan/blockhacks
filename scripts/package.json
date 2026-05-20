@@ -1,0 +1,12 @@
+{
+  "name": "obg-pixelate",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "pixelate": "node pixelate.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0"
+  }
+}

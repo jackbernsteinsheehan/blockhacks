@@ -1,0 +1,26 @@
+export default {
+  "Tackle": { "type": "Meme", "category": "physical", "power": 40, "accuracy": 100, "pp": 35 },
+  "ColdCall": { "type": "Governance", "category": "physical", "power": 50, "accuracy": 95, "pp": 25 },
+  "GasFeeSpike": { "type": "DeFi", "category": "special", "power": 65, "accuracy": 95, "pp": 20, "effect": "FUD", "effectChance": 20 },
+  "RugPull": { "type": "DeFi", "category": "physical", "power": 85, "accuracy": 80, "pp": 10, "effect": "Rugged", "effectChance": 30 },
+  "MerkleProof": { "type": "ZK", "category": "special", "power": 60, "accuracy": 100, "pp": 20 },
+  "ReentrancyGuard": { "type": "Security", "category": "status", "power": 0, "accuracy": 100, "pp": 15, "effect": "Slashed", "effectChance": 100 },
+  "SmartContract": { "type": "Solidity", "category": "special", "power": 70, "accuracy": 95, "pp": 15 },
+  "BorrowCheck": { "type": "Rust", "category": "physical", "power": 75, "accuracy": 90, "pp": 15 },
+  "ResourceMove": { "type": "Move", "category": "physical", "power": 70, "accuracy": 95, "pp": 15 },
+  "NodeFork": { "type": "Consensus", "category": "physical", "power": 60, "accuracy": 100, "pp": 20, "effect": "Forked", "effectChance": 25 },
+  "MintBurn": { "type": "NFT", "category": "special", "power": 65, "accuracy": 100, "pp": 15 },
+  "Tweetstorm": { "type": "Meme", "category": "special", "power": 55, "accuracy": 100, "pp": 25, "effect": "FUD", "effectChance": 40 },
+  "FlashLoan": { "type": "DeFi", "category": "special", "power": 95, "accuracy": 75, "pp": 5 },
+  "ZkProof": { "type": "ZK", "category": "special", "power": 90, "accuracy": 90, "pp": 10 },
+  "Slashing": { "type": "Consensus", "category": "physical", "power": 80, "accuracy": 85, "pp": 10, "effect": "Slashed", "effectChance": 50 },
+  "PythonScript": { "type": "Python", "category": "special", "power": 55, "accuracy": 100, "pp": 25 },
+  "TypeScript": { "type": "JS", "category": "special", "power": 65, "accuracy": 95, "pp": 20 },
+  "DAOProposal": { "type": "Governance", "category": "status", "power": 0, "accuracy": 90, "pp": 10, "effect": "Liquidated", "effectChance": 100 },
+  "PresidentialOrder": { "type": "Governance", "category": "physical", "power": 110, "accuracy": 85, "pp": 5 },
+  "FUDStorm": { "type": "Meme", "category": "status", "power": 0, "accuracy": 100, "pp": 15, "effect": "FUD", "effectChance": 100 },
+  "DiamondHand": { "type": "DeFi", "category": "physical", "power": 50, "accuracy": 100, "pp": 20 },
+  "PingPacket": { "type": "Consensus", "category": "physical", "power": 35, "accuracy": 100, "pp": 30, "priority": 1 },
+  "Audit": { "type": "Security", "category": "special", "power": 75, "accuracy": 100, "pp": 10 }
+}
+;
