@@ -50,7 +50,7 @@ export class BattleScene {
     return new Menu(
       [{ label: "FIGHT" }, { label: "BAG" }, { label: "PARTY" }, { label: "RUN" }],
       {
-        columns: 2,
+        columns: 1,
         onConfirm: (it) => {
           if (it.label === "FIGHT") this.menuStack.push(this.makeFightMenu());
           else if (it.label === "BAG") this.menuStack.push(this.makeBagMenu());
@@ -66,7 +66,7 @@ export class BattleScene {
       return { label: `${m}`, sub: `${def.type} P${def.power || "-"} A${def.accuracy}`, move: m };
     });
     return new Menu(items, {
-      columns: 2,
+      columns: 1,
       onConfirm: (it) => this.submit({ kind: "move", move: it.move }),
       onCancel: () => this.menuStack.pop(),
     });
